@@ -10,7 +10,7 @@ const loadLesson = () => {
  
 // for  load word
 
-
+// this function is used for remove effect first for every lesson button 
 const removeActive = ()=>{
   const lessonAllBtn = document.querySelectorAll('.all-lesson-btn')
   lessonAllBtn.forEach((btn)=> btn.classList.remove('active'))
@@ -23,10 +23,10 @@ const loadWord = (id) => {
     .then((res) => res.json())
     .then((data) => {
 
-      removeActive();
+ removeActive();  // remove first 
       const clickBtn = document.getElementById(`lesson-btn ${id}`);
       // console.log(clickBtn)
-      clickBtn.classList.add('active')
+ clickBtn.classList.add('active') //add effect 
 
       displayWord(data.data);
     }); /// here 1st data is a parameter and 2nd data is an array object which is comming from json file
@@ -66,7 +66,7 @@ const displayWord = (word) => {
     } "</div>
 
         <div class="flex justify-between items-center">
-          <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]">
+          <button onClick="my_modal_5.showModal()" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]">
             <i class="fa-solid fa-circle-info"></i>
           </button>
           <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]">
@@ -91,7 +91,7 @@ const display = (lesson) => {
     console.log(lesson);
     const btnDiv = document.createElement("div");
     btnDiv.innerHTML = `
-       <button id="lesson-btn ${lesson.level_no}" onclick="loadWord(${lesson.level_no})"  class="btn btn-outline btn-primary all-lesson-btn"> 
+       <button id="lesson-btn ${lesson.level_no}" onclick=" loadWord (${lesson.level_no})"  class="btn btn-outline btn-primary all-lesson-btn"> 
        <i class="fa-solid fa-book-open"></i>
        Lesson -${lesson.level_no}
        </button>
