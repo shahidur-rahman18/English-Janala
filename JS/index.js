@@ -32,6 +32,56 @@ const loadWord = (id) => {
     }); /// here 1st data is a parameter and 2nd data is an array object which is comming from json file
 };
 
+ const loadDetails=async(id)=> {
+  const url =`https://openapi.programming-hero.com/api/word/${id}`
+  const res= await fetch(url)
+  const details= await res.json()
+  displayDetails(details.data)
+ }
+
+ const displayDetails =(word) =>{
+  console.log(word)
+
+/*   {
+    "word": "Sincere",
+    "meaning": "সত্‍ / আন্তরিক",
+    "pronunciation": "সিনসিয়ার",
+    "level": 1,
+    "sentence": "He gave a sincere apology.",
+    "points": 1,
+    "partsOfSpeech": "adjective",
+    "synonyms": [
+        "honest",
+        "genuine",
+        "truthful"
+    ],
+    "id": 19
+} */
+
+  const detailsBox= document.getElementById('details=container')
+  detailsBox.innerHTML=`
+        <div>
+            <h2 class="text-2xl font-bold">${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${word.pronunciation})</h2>
+          </div>
+
+          <div>
+            <h4 class="font-bold text-lg">Meaning</h4>
+            <p class="font-bangla font-semibold">${word.meaning}</p>
+          </div>
+          <div>
+            <h4 class="font-bold text-lg">Example</h4>
+            <p>${word.sentence}</p>
+          </div>
+          <div>
+            <h4 class="font-bangla font-bold ">সমার্থক শব্দ গুলো</h4>
+             <span class="btn">Sync</span>
+             <span class="btn">Sync</span>
+             <span class="btn">Sync</span>
+          </div>
+  `
+  document.getElementById('my_modal_5').showModal()
+ }
+
 // for load word
 
 const displayWord = (word) => {
@@ -66,7 +116,7 @@ const displayWord = (word) => {
     } "</div>
 
         <div class="flex justify-between items-center">
-          <button onClick="my_modal_5.showModal()" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]">
+          <button onClick="loadDetails(${word.id})" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]">
             <i class="fa-solid fa-circle-info"></i>
           </button>
           <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]">
