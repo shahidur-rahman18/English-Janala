@@ -5,12 +5,31 @@ const loadLesson = () => {
     .then((json) => display(json.data));
 };
 
+
+
+ 
 // for  load word
+
+
+const removeActive = ()=>{
+  const lessonAllBtn = document.querySelectorAll('.all-lesson-btn')
+  lessonAllBtn.forEach((btn)=> btn.classList.remove('active'))
+  // console.log(lessonAllBtn)
+}
+ 
 const loadWord = (id) => {
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayWord(data.data)); /// here 1st data is a parameter and 2nd data is an array object which is comming from json file
+    .then((data) => {
+
+      removeActive();
+      const clickBtn = document.getElementById(`lesson-btn ${id}`);
+      // console.log(clickBtn)
+      clickBtn.classList.add('active')
+
+      displayWord(data.data);
+    }); /// here 1st data is a parameter and 2nd data is an array object which is comming from json file
 };
 
 // for load word
@@ -31,14 +50,20 @@ const displayWord = (word) => {
   }
 
   word.forEach((word) => {
-    console.log(word);
+    // console.log(word);
     const wordCard = document.createElement("div");
 
     wordCard.innerHTML = `
     <div class="bg-white shadow-sm rounded-xl py-10 px-5  text-center space-y-3">
-        <h1 class="font-bold text-2xl">${word.word? word.word: 'word পাওয়া যায়নি'} </h1>
+        <h1 class="font-bold text-2xl">${
+          word.word ? word.word : "word পাওয়া যায়নি"
+        } </h1>
         <p>Meaning /Pronounciation</p>
-        <div class="font-bangla font-medium text-2xl">"${word.meaning ? word.meaning : 'meaning পাওয়া যায়নি' } / ${word.pronunciation ? word.pronunciation : 'pronunciation পাওয়া যায়নি'} "</div>
+        <div class="font-bangla font-medium text-2xl">"${
+          word.meaning ? word.meaning : "meaning পাওয়া যায়নি"
+        } / ${
+      word.pronunciation ? word.pronunciation : "pronunciation পাওয়া যায়নি"
+    } "</div>
 
         <div class="flex justify-between items-center">
           <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]">
@@ -66,7 +91,7 @@ const display = (lesson) => {
     console.log(lesson);
     const btnDiv = document.createElement("div");
     btnDiv.innerHTML = `
-       <button onclick="loadWord(${lesson.level_no})"  class="btn btn-outline btn-primary"> 
+       <button id="lesson-btn ${lesson.level_no}" onclick="loadWord(${lesson.level_no})"  class="btn btn-outline btn-primary all-lesson-btn"> 
        <i class="fa-solid fa-book-open"></i>
        Lesson -${lesson.level_no}
        </button>
