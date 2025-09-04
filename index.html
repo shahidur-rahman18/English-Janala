@@ -60,18 +60,17 @@
               tabindex="0"
               class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-             
-            <li>
-              <a href="" ><i class="fa-solid fa-question"></i> FAQ</a>
-            </li>
-            <li>
-              <a href=""  > <i class="fa-solid fa-book-open"></i>Learn</a>
-            </li>
-            <li>
-              <a href="" ><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a>
-            </li>
-          
-              
+              <li>
+                <a href=""><i class="fa-solid fa-question"></i> FAQ</a>
+              </li>
+              <li>
+                <a href=""> <i class="fa-solid fa-book-open"></i>Learn</a>
+              </li>
+              <li>
+                <a href=""
+                  ><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a
+                >
+              </li>
             </ul>
           </div>
           <a href="" class="flex items-center gap-1">
@@ -85,62 +84,84 @@
         <div class="navbar-end hidden lg:flex">
           <ul class="menu menu-horizontal px-1 space-x-3">
             <li>
-              <a href="" class="btn btn-outline btn-primary"><i class="fa-solid fa-question"></i> FAQ</a>
+              <a href="" class="btn btn-outline btn-primary"
+                ><i class="fa-solid fa-question"></i> FAQ</a
+              >
             </li>
             <li>
-              <a href="" class="btn btn-outline btn-primary" > <i class="fa-solid fa-book-open"></i>Learn</a>
+              <a href="" class="btn btn-outline btn-primary">
+                <i class="fa-solid fa-book-open"></i>Learn</a
+              >
             </li>
             <li>
-              <a href="" class="btn btn-outline btn-primary" ><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a>
+              <a href="" class="btn btn-outline btn-primary"
+                ><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a
+              >
             </li>
           </ul>
         </div>
       </div>
     </header>
 
-    <section class="flex flex-col-reverse md:flex-row justify-between items-center w-11/12 mx-auto py-5 gap-20 ">
-        <div class="content flex-1 text-center md:text-left ">
-            <h1 class="text-4xl font-bold mb-7"><span class="text-sky-500">English</span> is Easy!!</h1>
-            <p class="font-bangla ">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
-        </div>
-        <div class="image flex-1">
-            <img src="./assets/hero-student.png" alt="">
-        </div>
+    <section
+      class="flex flex-col-reverse md:flex-row justify-between items-center w-11/12 mx-auto py-5 gap-20"
+    >
+      <div class="content flex-1 text-center md:text-left">
+        <h1 class="text-4xl font-bold mb-7">
+          <span class="text-sky-500">English</span> is Easy!!
+        </h1>
+        <p class="font-bangla mb-2">
+          আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
+          আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে
+          অন্য একটি Level এ
+        </p>
 
+        <form
+          class="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg flex flex-col gap-4"
+        >
+          <h2 class="text-2xl font-bold text-center text-gray-800">Login</h2>
+
+          <input
+            type="text"
+            placeholder="Enter Your Name"
+            class="px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+          />
+
+          <input
+            type="password"
+            placeholder="Enter Your Password"
+            class="px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+          />
+
+          <button
+            class="w-full py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+          >
+            Login
+          </button>
+
+          <p class="text-center text-sm text-gray-600">
+            Don’t have an account?
+            <a href="#" class="text-blue-600 hover:underline">Sign up</a>
+          </p>
+        </form>
+      </div>
+      <div class="image flex-1">
+        <img src="./assets/hero-student.png" alt="" />
+      </div>
     </section>
-<section class="flex items-center justify-center min-h-screen bg-gray-100 px-4">
-  <form class="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg flex flex-col gap-4">
-    
-    <h2 class="text-2xl font-bold text-center text-gray-800">Login</h2>
 
-    <input 
-      type="text" 
-      placeholder="Enter Your Name" 
-      class="px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-    >
+    <!-- login section 
+    <section
+      class="flex items-center justify-center md:justify-start px-4 md:mt-[-60px]"
+    ></section> -->
 
-    <input 
-      type="password" 
-      placeholder="Enter Your Password" 
-      class="px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-    >
+    <section id="banner-container">
+      <h1 class="text-4xl font-bold mb-7 text-center">
+        <span class="text-sky-500">Let's </span>Learn Vocabularies
+      </h1>
+      <div id="level-container"></div>
+    </section>
 
-    <button 
-      class="w-full py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
-    >
-      Login
-    </button>
-    
-    <p class="text-center text-sm text-gray-600">
-      Don’t have an account? 
-      <a href="#" class="text-blue-600 hover:underline">Sign up</a>
-    </p>
-  </form>
-</section>
-
-
-
-
-
+    <script src="./JS/index.js"></script>
   </body>
 </html>
