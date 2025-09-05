@@ -7,10 +7,12 @@ const createElements= (arr) => {
 
 const manageSpinner = (status)=>{
   if(status== true){
+    console.log('oh i see ')
     document.getElementById('spinner').classList.remove('hidden')
     document.getElementById('word-container').classList.add('hidden')
   }
   else{
+    console.log('oh i ')
     document.getElementById('word-container').classList.remove('hidden')
     document.getElementById('spinner').classList.add('hidden')
 
