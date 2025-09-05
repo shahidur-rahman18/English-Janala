@@ -3,6 +3,13 @@ const createElements= (arr) => {
   return (htmlElement.join(''))
 }
 
+// voice talk 
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
 // spinner
 
 const manageSpinner = (status)=>{
@@ -18,6 +25,8 @@ const manageSpinner = (status)=>{
 
   }
 }
+
+
 
 //   load lesson part
 const loadLesson = () => {
@@ -144,7 +153,7 @@ const displayWord = (word) => {
           <button onClick="loadDetails(${word.id})" class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]">
             <i class="fa-solid fa-circle-info"></i>
           </button>
-          <button class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]">
+          <button onClick="pronounceWord('${word.word} ') " class="btn bg-[#1A91FF10] hover:bg-[#1A91FF80]">
             <i class="fa-solid fa-volume-low"></i>
           </button>
         </div>
@@ -180,3 +189,22 @@ const display = (lesson) => {
 };
 
 loadLesson();
+
+
+document.getElementById('search-btn').addEventListener('click', ()=>{
+  removeActive()   //reuse function
+
+  const inputValue = document.getElementById('input-search')
+  const searchValue = inputValue.value.trim().toLowerCase() 
+  console.log(searchValue)
+
+  fetch('https://openapi.programming-hero.com/api/words/all')
+  .then((res) => res.json())
+  .then((data) => {
+    const allWords = data.data
+
+    console.log(allWords)
+    const filterWords = allWords.filter(word=> word.word.toLowerCase().includes(searchValue))
+    displayWord(filterWords)  //reuse function
+  })
+})
