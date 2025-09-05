@@ -1,3 +1,22 @@
+const createElements= (arr) => {
+  const htmlElement = arr.map((element) => `<span class='btn'>${element}</span>`)
+  return (htmlElement.join(''))
+}
+
+// spinner
+
+const manageSpinner = (status)=>{
+  if(status== true){
+    document.getElementById('spinner').classList.remove('hidden')
+    document.getElementById('word-container').classList.add('hidden')
+  }
+  else{
+    document.getElementById('word-container').classList.remove('hidden')
+    document.getElementById('spinner').classList.add('hidden')
+
+  }
+}
+
 //   load lesson part
 const loadLesson = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
@@ -18,6 +37,7 @@ const removeActive = ()=>{
 }
  
 const loadWord = (id) => {
+  manageSpinner(true)
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -33,6 +53,7 @@ const loadWord = (id) => {
 };
 
  const loadDetails=async(id)=> {
+
   const url =`https://openapi.programming-hero.com/api/word/${id}`
   const res= await fetch(url)
   const details= await res.json()
@@ -74,9 +95,8 @@ const loadWord = (id) => {
           </div>
           <div>
             <h4 class="font-bangla font-bold ">সমার্থক শব্দ গুলো</h4>
-             <span class="btn">Sync</span>
-             <span class="btn">Sync</span>
-             <span class="btn">Sync</span>
+             <div>${createElements(word.synonyms)}</div>
+      
           </div>
   `
   document.getElementById('my_modal_5').showModal()
@@ -97,6 +117,9 @@ const displayWord = (word) => {
       </div>
 
      `;
+     
+     manageSpinner(false)
+     return
   }
 
   word.forEach((word) => {
@@ -127,6 +150,7 @@ const displayWord = (word) => {
     `;
     wordContainer.append(wordCard);
   });
+  manageSpinner(false)
 };
 
 //  for load lesson part
